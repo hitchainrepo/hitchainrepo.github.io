@@ -1,0 +1,6 @@
+# Setup
+title:          "HitChain Blog"
+description:    "Official blog for the HitChain."
+url:            "https://hitchainrepo.github.io"
+future:         true
+permalink:      pretty
