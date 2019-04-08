@@ -54,7 +54,7 @@
 
 <p>
     从 Github 仓库中检出 hit-java 源码。
-<pre class="highlight"><code class="language-shell na">
+<pre class="highlight"><code class="language-sh na">
 git clone https://github.com/hitchainrepo/hit-java.git
 git checkout -b hit-0.01-5.2.1.2 origin/hit-0.01-5.2.1.2
 </code></pre>
@@ -68,7 +68,7 @@ git checkout -b hit-0.01-5.2.1.2 origin/hit-0.01-5.2.1.2
 </h3>
 
 <p>
-<pre class="highlight"><code class="language-shell na">
+<pre class="highlight"><code class="language-sh na">
 cd hit-java
 mvn clean install -DskipTests
 </code></pre>
@@ -82,7 +82,7 @@ mvn clean install -DskipTests
 
 <p>
 hit 编译完成后存放的目录，复制到用户的执行目录下，如：/bin, /usr/bin。或复制到指定目录，然后添加系统 PATH 指向该目录。
-<pre class="highlight"><code class="language-shell na">
+<pre class="highlight"><code class="language-sh na">
 cd org.eclipse.jgit.pgm/target
 cp hit YOUR_BIN_DIR
 </code></pre>

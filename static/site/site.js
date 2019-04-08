@@ -50,7 +50,7 @@ function sectionNavh2h3(){
     el.empty().append(content.join("\n"));
 }
 function bindLoadContent(){
-    $(".container-fluid nav").on("click", ".bd-toc-item a", function(event){
+    $(".container-fluid").on("click", "a.loadable", function(event){
         event.preventDefault();
         var href = $(event.target).attr("href")||"";
         if(href.startsWith("/")){
