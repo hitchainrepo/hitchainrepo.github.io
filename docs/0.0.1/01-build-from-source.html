@@ -1,0 +1,89 @@
+<h1 class="bd-title" id="content">源码构建</h1>
+<p class="bd-lead">
+    从源码构建hit。
+</p>
+
+<h2 id="setup-environment">
+    <span class="bd-content-title">
+        准备安装环境
+    </span>
+</h2>
+
+<p>
+    采用 Java 语言，所有平台设置相同。
+</p>
+
+<h3 id="setup-jdk">
+    <span class="bd-content-title">
+        安装 JDK8+
+    </span>
+</h3>
+
+<p>
+    安装 JDK 8 以上版本
+    <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 下载</a>
+</p>
+
+<h3 id="setup-maven">
+    <span class="bd-content-title">
+        安装 Maven
+    </span>
+</h3>
+
+<p>
+    安装 Maven 3.5.2 以上版本
+    <a href="http://maven.apache.org/download.cgi">Maven 下载</a>
+</p>
+
+
+<h2 id="checkout-install">
+    <span class="bd-content-title">
+        检出源码并安装
+    </span>
+</h2>
+
+<p>
+    通过源码安装hit。
+</p>
+
+<h3 id="checkout-source">
+    <span class="bd-content-title">
+        检出源码
+    </span>
+</h3>
+
+<p>
+    从 Github 仓库中检出 hit-java 源码。
+<pre class="highlight"><code class="language-shell na">
+git clone https://github.com/hitchainrepo/hit-java.git
+git checkout -b hit-0.01-5.2.1.2 origin/hit-0.01-5.2.1.2
+</code></pre>
+<a href="https://github.com/hitchainrepo/hit-java/tree/hit-0.01-5.2.1.2">源码</a>
+</p>
+
+<h3 id="maven-build">
+    <span class="bd-content-title">
+        Maven 构建
+    </span>
+</h3>
+
+<p>
+<pre class="highlight"><code class="language-shell na">
+cd hit-java
+mvn clean install -DskipTests
+</code></pre>
+</p>
+
+<h3 id="dist-hit">
+    <span class="bd-content-title">
+        hit
+    </span>
+</h3>
+
+<p>
+hit 编译完成后存放的目录，复制到用户的执行目录下，如：/bin, /usr/bin。或复制到指定目录，然后添加系统 PATH 指向该目录。
+<pre class="highlight"><code class="language-shell na">
+cd org.eclipse.jgit.pgm/target
+cp hit YOUR_BIN_DIR
+</code></pre>
+</p>
