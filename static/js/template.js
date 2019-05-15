@@ -108,9 +108,15 @@ function Template(tpl){
                 i = i + 1;
                 continue;
             }
-            if (c == '\\' && !inJsBlock && !inOutBlock) {
+            /* out put the js block content. */
+            if (inJsBlock || inOutBlock) {
+                str.push(c);
+                continue;
+            }
+
+            if (c == '\\') {
                 str.push('\\\\');
-            } else if (c == '"' && !inJsBlock && !inOutBlock) {
+            } else if (c == '"') {
                 str.push('\\"');
             } else if (c == '\n') {
                 str.push('\\n');
