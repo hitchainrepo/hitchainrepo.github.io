@@ -1,11 +1,8 @@
 ;
-var CTX_ROOT=window["CTX_ROOT"]||"", CTX_EN=window["CTX_EN"]||"";
-var DOC_ROOT=window["DOC_ROOT"]||"", DOC_EN=window["DOC_EN"]||"";
+var CTX_ROOT=window["CTX_ROOT"]||"";
+var DOC_ROOT=window["DOC_ROOT"]||"";
 $(document).ready(function(){
-    if(DOC_EN){
-        loadTemplate($("header"), DOC_ROOT+"site/header.html");
-        loadTemplate($("footer"), DOC_ROOT+"site/footer.html");
-    }else{
+    {
         loadTemplate($("header"), DOC_ROOT+"site/header.html");
         loadTemplate($("footer"), DOC_ROOT+"site/footer.html");
     }
@@ -68,7 +65,7 @@ function loadTemplate($el, href, updateNav){
         dataType: "text"
     }).done(function(data) {
         var tpl = Template(data);
-        tpl.render({"context": CTX_ROOT, "docRoot":DOC_ROOT}, function(output){
+        tpl.render({"context": CTX_ROOT, "docRoot": DOC_ROOT}, function(output){
             $el.empty().append(output);
         });
         if(updateNav === true){
@@ -76,3 +73,9 @@ function loadTemplate($el, href, updateNav){
         }
     });
 }
+
+var hit_versions = [
+    {version: "0.0.3", url: "docs/0.0.3/index.html"},
+    {version: "0.0.2", url: "docs/0.0.2/index.html"},
+    {version: "0.0.1", url: "docs/0.0.1/index.html"}
+];
