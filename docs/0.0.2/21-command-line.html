@@ -1,0 +1,260 @@
+<h1 class="bd-title" id="content">命令说明</h1>
+<p class="bd-lead">
+    hit 个性化命令说明。
+</p>
+
+<h2 id="hit-cmd">
+    <span class="bd-content-title">
+        hit 命令说明
+    </span>
+</h2>
+
+<h3 id="hit-create">
+    <span class="bd-content-title">
+        创建 hit 配置
+    </span>
+</h3>
+
+<p>
+    第一次使用 hit 时需要创建 hit 配置：<code class="ge">hit cfg create your-password-here</code>
+<pre><code class="language-sh na">
+$&gt; hit cfg create password
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Please write down the mnemonic words(for recover your password)!!! :
+alert maze mimic half fat depth motor trigger tape that ribbon also
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Hit config is updated.
+</code></pre>
+    创建 hit 配置时，需要密码，并且生成一个密码助记词，可用于密码找回。
+</p>
+
+<h3 id="hit-account">
+    <span class="bd-content-title">
+        hit 帐户维护
+    </span>
+</h3>
+
+<p>
+    hit 可以维护多个帐户，并且可以随意切换到指定的名称的帐户上操作。
+    该帐户主要作用是用于与智能合约的交互。
+</p>
+
+<p>
+    <li>hit 帐户相关命令</li>
+    <br><code class="ge">hit cfg account [add|remove] name [priKey] [pubKey] password</code>
+    <br><code class="ge">hit cfg account set name</code>
+</p>
+
+<p>
+    <li>创建帐户</li>
+    <br><code class="ge">hit cfg account add name [priKey] [pubKey] password</code>
+    <br>参数说明：
+    <br>name：[必须]，帐户的名称，任意英文字母及数字
+    <br>priKey，pubKey：[可选]，添加已有的帐户时需要提供帐户私钥及帐户地址
+    <br>password：[必须]， 创建hit配置时的密码
+</p>
+
+<p>
+    <li>删除帐户</li>
+    <br><code class="ge">hit cfg account remove name</code>
+    <br>参数说明：
+    <br>name：[必须]，帐户的名称
+</p>
+
+<p>
+    <li>设置默认帐户</li>
+    <br><code class="ge">hit cfg account set name</code>
+    <br>参数说明：
+    <br>name：[必须]，帐户的名称
+</p>
+
+<p>
+    <li>列出所有帐户信息</li>
+    <br><code class="ge">hit cfg account</code>
+</p>
+
+<h3 id="hit-rsa">
+    <span class="bd-content-title">
+        hit 密钥对维护
+    </span>
+</h3>
+
+<p>
+    hit 可以维护多个帐户，并且可以随意切换到指定的名称的帐户上操作。
+    该密钥对的主要作用是用于私有仓库的密钥非对称加密。
+</p>
+
+<p>
+    <li>hit 密钥对相关命令</li>
+    <br><code class="ge">hit cfg rsa [add|remove] name [priKey] [pubKey] password</code>
+    <br><code class="ge">hit cfg rsa set name</code>
+</p>
+
+<p>
+    <li>创建密钥对</li>
+    <br><code class="ge">hit cfg rsa add name [priKey] [pubKey] password</code>
+    <br>参数说明：
+    <br>name：[必须]，密钥对的名称，任意英文字母及数字
+    <br>priKey，pubKey：[可选]，添加已有的密钥对时需要提供密钥的私钥及公钥
+    <br>password：[必须]， 创建hit配置时的密码
+</p>
+
+<p>
+    <li>删除密钥对</li>
+    <br><code class="ge">hit cfg rsa remove name</code>
+    <br>参数说明：
+    <br>name：[必须]，密钥对的名称
+</p>
+
+<p>
+    <li>设置默认密钥对</li>
+    <br><code class="ge">hit cfg rsa set name</code>
+    <br>参数说明：
+    <br>name：[必须]，密钥对的名称
+</p>
+
+<p>
+    <li>列出所有密钥对信息</li>
+    <br><code class="ge">hit cfg rsa</code>
+</p>
+
+<h3 id="hit-storage">
+    <span class="bd-content-title">
+        hit 存储配置维护
+    </span>
+</h3>
+
+<p>
+    hit 可以维护多个存储配置，并且可以随意切换到指定的名称的存储配置上操作。
+    该存储配置的主要作用是用于存储仓库的文件的入口地址。
+</p>
+
+<p>
+    <li>hit 存储配置相关命令</li>
+    <br><code class="ge">hit cfg storage [add|remove] name [url]</code>
+    <br><code class="ge">hit cfg storage set name</code>
+</p>
+
+<p>
+    <li>创建存储配置</li>
+    <br><code class="ge">hit cfg storage add name url</code>
+    <br>参数说明：
+    <br>name：[必须]，存储配置的名称，任意英文字母及数字
+    <br>url：[必须]， 存储配置的入口地址
+</p>
+
+<p>
+    <li>删除存储配置</li>
+    <br><code class="ge">hit cfg storage remove name</code>
+    <br>参数说明：
+    <br>name：[必须]，存储配置的名称
+</p>
+
+<p>
+    <li>设置默认存储配置</li>
+    <br><code class="ge">hit cfg storage set name</code>
+    <br>参数说明：
+    <br>name：[必须]，存储配置的名称
+</p>
+
+<p>
+    <li>列出所有存储配置信息</li>
+    <br><code class="ge">hit cfg storage</code>
+</p>
+
+<h3 id="hit-repository">
+    <span class="bd-content-title">
+        hit 仓库配置维护
+    </span>
+</h3>
+
+<p>
+    hit 可以维护多个仓库配置，并且可以随意切换到指定的名称的仓库配置上操作。
+    该仓库配置的主要作用是用于仓库的智能合约的入口地址。
+</p>
+
+<p>
+    <li>hit 仓库配置相关命令</li>
+    <br><code class="ge">hit cfg repository [add|remove] name [url]</code>
+    <br><code class="ge">hit cfg repository set name</code>
+</p>
+
+<p>
+    <li>创建仓库配置</li>
+    <br><code class="ge">hit cfg repository add name url</code>
+    <br>参数说明：
+    <br>name：[必须]，仓库配置的名称，任意英文字母及数字
+    <br>url：[必须]， 仓库配置的入口地址
+</p>
+
+<p>
+    <li>删除仓库配置</li>
+    <br><code class="ge">hit cfg repository remove name</code>
+    <br>参数说明：
+    <br>name：[必须]，仓库配置的名称
+</p>
+
+<p>
+    <li>设置默认仓库配置</li>
+    <br><code class="ge">hit cfg repository set name</code>
+    <br>参数说明：
+    <br>name：[必须]，仓库配置的名称
+</p>
+
+<p>
+    <li>列出所有仓库配置信息</li>
+    <br><code class="ge">hit cfg repository</code>
+</p>
+
+<h3 id="hit-repo">
+    <span class="bd-content-title">
+        hit 代码仓库操作
+    </span>
+</h3>
+
+<p>
+    hit repo 命令可以对私有仓库及团队进行管理。
+</p>
+
+<p>
+    <li>hit 代码仓库操作</li>
+    <br><code class="ge">hit repo keypair   add</code>
+    <br><code class="ge">hit repo keypair   remove</code>
+    <br><code class="ge">hit repo keypair   renew</code>
+    <br><code class="ge">hit repo member    add    memberEmail publicRsa eccAddress</code>
+    <br><code class="ge">hit repo member    remove memberEmail</code>
+</p>
+
+<p>
+    <li>为仓库添加密钥对并加密仓库</li>
+    <br><code class="ge">hit repo keypair add</code>
+    <br>参数说明：
+</p>
+
+<p>
+    <li>删除私有仓库加密</li>
+    <br><code class="ge">hit repo keypair remove</code>
+    <br>参数说明：
+</p>
+
+<p>
+    <li>更新仓库的密钥对</li>
+    <br><code class="ge">hit repo keypair renew</code>
+    <br>参数说明：
+</p>
+
+<p>
+    <li>添加仓库团队成员</li>
+    <br><code class="ge">hit repo member    add    memberEmail publicRsa eccAddress</code>
+    <br>参数说明：
+    <br>memberEmail：[必须]，成员的 Email
+    <br>publicRsa：[必须]，成员的公钥
+    <br>eccAddress：[必须]，成员的以太坊地址
+</p>
+
+<p>
+    <li>删除仓库团队成员</li>
+    <br><code class="ge">hit repo member    remove memberEmail</code>
+    <br>参数说明：
+    <br>memberEmail：[必须]，成员的 Email
+</p>

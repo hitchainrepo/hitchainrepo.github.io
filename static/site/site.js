@@ -1,9 +1,10 @@
 ;
+var CTX_ROOT=window["CTX_ROOT"]||"", CTX_EN=window["CTX_EN"]||"";
 var DOC_ROOT=window["DOC_ROOT"]||"", DOC_EN=window["DOC_EN"]||"";
 $(document).ready(function(){
     if(DOC_EN){
-        loadTemplate($("header"), DOC_ROOT+"en/site/header.html");
-        loadTemplate($("footer"), DOC_ROOT+"en/site/footer.html");
+        loadTemplate($("header"), DOC_ROOT+"site/header.html");
+        loadTemplate($("footer"), DOC_ROOT+"site/footer.html");
     }else{
         loadTemplate($("header"), DOC_ROOT+"site/header.html");
         loadTemplate($("footer"), DOC_ROOT+"site/footer.html");
@@ -67,7 +68,7 @@ function loadTemplate($el, href, updateNav){
         dataType: "text"
     }).done(function(data) {
         var tpl = Template(data);
-        tpl.render({"context": DOC_ROOT}, function(output){
+        tpl.render({"context": CTX_ROOT, "docRoot":DOC_ROOT}, function(output){
             $el.empty().append(output);
         });
         if(updateNav === true){

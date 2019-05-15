@@ -1,0 +1,109 @@
+<h1 class="bd-title" id="content">加速器</h1>
+<p class="bd-lead">
+    加速器主要作用是加速智能合约的部署
+</p>
+
+<h2 id="accelerator-start">
+    <span class="bd-content-title">
+        加速器简介
+    </span>
+</h2>
+
+<p>
+    目前加速器的主要作用是预部署一定数量的智能合约，以减少用户在初始创建代码仓库时等待的时间，
+    另外一个功能为会作为智能合约的 delegator 代理智能合约的方法调用。后期会把功能转移到 hit 中，由用户选择是否使用加速器。
+</p>
+
+<h2 id="accelerator-api">
+    <span class="bd-content-title">
+        加速器 API
+    </span>
+</h2>
+
+<p>
+    下面为加速器用到的与本智能合约相关的几个 API。
+</p>
+
+<h3 id="deploy-contract">
+    <span class="bd-content-title">
+        加速器 API
+    </span>
+</h3>
+
+<p>
+    部署智能合约，参数说明：
+    <li>PrivateKey：Ethereum私钥，为“-”时，则采用加速的私钥，如果采用自己的私钥，则要先通过这个 API加密PrivateKey：<code class="ge">/api/web3j/encryptPrivateKey</code>
+    </li><li>GasLimit：部署合约消耗的Gas，默认5000000即可
+    </li><li>Gwei：部署合约的 Gas Price，默认1即可</li>
+</p>
+
+<pre class="highlight"><code class="language-sh na">
+curl -k
+    -X POST "https://121.40.127.45:1443/api/web3j/deployRepositoryNameContract"
+    -H "accept: text/plain;charset=UTF-8" -H "Content-Type: text/plain"
+    -d $'PrivateKey=-\nGasLimit=5000000\nGwei=1'
+</code></pre>
+
+<h3 id="pri-key-encrypt">
+    <span class="bd-content-title">
+        加密PrivateKey
+    </span>
+</h3>
+
+<p>
+    加密PrivateKey，后台不会记录任何PrivateKey，如果担心请使用一个测试帐户，或者直接使用加速器的帐号，参数说明：
+    <li>PrivateKey：帐户私钥</li>
+</p>
+
+<pre class="highlight"><code class="language-sh na">
+curl -k
+    -X POST "https://121.40.127.45:1443/api/web3j/encryptPrivateKey"
+    -H "accept: text/plain;charset=UTF-8" -H "Content-Type: text/plain"
+    -d $'PrivateKey=replace-with-your-private-key'
+</code></pre>
+
+<h3 id="read-contract">
+    <span class="bd-content-title">
+        读取智能合约
+    </span>
+</h3>
+
+<p>
+    读取智能合约状态，参数说明：
+    <li>FromAddress：用户address
+    </li><li>ContractAddress：仓库的repository address
+    </li><li>FunctionName：智能合约的读取方法，方法后面带有参数，要对应填入 Arg 中，repositoryName，repositoryAddress，owner，delegator，authedAccounts(addr)，authedAccountList(int)，authedAccountSize，hasTeamMember(addr)，teamMemberAtIndex(int)
+    </li><li>Arg：方法的参数，如果没有参数则设置为“-”</li>
+</p>
+
+<pre class="highlight"><code class="language-sh na">
+curl -k
+    -X POST "https://121.40.127.45:1443/api/web3j/readRepositoryNameContract"
+    -H "accept: text/plain;charset=UTF-8" -H "Content-Type: text/plain"
+    -d $'FromAddress=your-address\nContractAddress=your-repository-address\nFunctionName=repositoryName|repositoryAddress|owner|delegator|authedAccounts(addr)|authedAccountList(int)|authedAccountSize|hasTeamMember(addr)|teamMemberAtIndex(int)\nArg=-'
+</code></pre>
+
+<h3 id="write-contract">
+    <span class="bd-content-title">
+        写入智能合约
+    </span>
+</h3>
+
+<p>
+    写入智能合约状态，参数说明：
+    <li>PrivateKey：用户的加密后的私钥，如果使用加速器默认的值为“-”
+    </li><li>ContractAddress：仓库的repository address
+    </li><li>FunctionName：智能合约的读取方法，方法后面带有参数，要对应填入 Arg1，Arg2，Arg3 中，init(addr,repoName)|initWithDelegator(addr,repoName,delegator)|updateRepositoryName(repoName)|updateRepositoryAddress(oldAddr,newAddr)|addTeamMember(addr)|removeTeamMember(addr)|changeOwner(addr)|delegateTo(addr)
+    </li><li>Arg1：方法的参数，如果没有参数则设置为“-”
+    </li><li>Arg2：方法的参数，如果没有参数则设置为“-”
+    </li><li>Arg3：方法的参数，如果没有参数则设置为“-”
+    </li><li>GasLimit：写合约消耗的Gas，默认300000即可
+    </li><li>Gwei：写合约的 Gas Price，默认1即可</li>
+</p>
+
+<pre class="highlight"><code class="language-sh na">
+curl -k
+    -X POST "https://121.40.127.45:1443/api/web3j/writeRepositoryNameContract"
+    -H "accept: text/plain;charset=UTF-8" -H "Content-Type: text/plain"
+    -d $'PrivateKey=your-encoded-private-key\nContractAddress=your-repository-address\nFunctionName=init(addr,repoName)|initWithDelegator(addr,repoName,delegator)|updateRepositoryName(repoName)|updateRepositoryAddress(oldAddr,newAddr)|addTeamMember(addr)|removeTeamMember(addr)|changeOwner(addr)|delegateTo(addr)\nArg1=-\nArg2=-\nArg3=-\nGasLimit=300000\nGwei=1'
+</code></pre>

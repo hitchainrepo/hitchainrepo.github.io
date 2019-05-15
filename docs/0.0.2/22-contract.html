@@ -1,0 +1,331 @@
+<h1 class="bd-title" id="content">智能合约说明</h1>
+<p class="bd-lead">
+    智能合约及其方法说明
+</p>
+
+<h2 id="contract-code">
+    <span class="bd-content-title">
+        智能合约代码
+    </span>
+</h2>
+
+<p>
+<pre class="highlight"><code class="language-js na">
+pragma solidity 0.5.6;
+
+/**
+ * @title RepositoryName
+ * @dev The contract to save the repository informations.
+ */
+contract RepositoryName {
+    /**
+     * @dev the event for use to find out the transaction is success or fail.
+     */
+    event Success(bool value);
+    /**
+     * @dev the contract/repository owner.
+     */
+    address public owner;
+    /**
+     * @dev the delegator can do many transaction for the contract/repository.
+     */
+    address public delegator;
+    /**
+     * @dev the repository name.
+     */
+    string public repositoryName;
+    /**
+     * @dev the team member addresses mapping.
+     */
+    mapping(address => bool) public authedAccounts;
+    /**
+     * @dev the team member addresses list.
+     */
+    address[] public authedAccountList;
+    /**
+     * @dev the team member size.
+     */
+    uint256 public authedAccountSize = uint256(0);
+    /**
+     * @dev the repository address.
+     */
+    string public repositoryAddress;
+
+    /**
+     * @dev create the contract with the contract owner.
+     * @param _owner The address to be the contract owner.
+     */
+    constructor(address _owner) public {
+        owner = _owner == address(0) ? msg.sender : _owner;
+        emit Success(true);
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner or the delegator.
+     */
+    modifier hasAuthority() {
+        require(msg.sender == owner || msg.sender == delegator);
+        _;
+    }
+
+    /**
+     * @dev Throws if called by any account other than the owner.
+     */
+    modifier onlyOwner() {
+        require(msg.sender == owner);
+        _;
+    }
+
+    /**
+     * @dev init the contract with the new owner and repository name.
+     * @param _newOwner The address to be the contract owner.
+     * @param _repositoryName The repository name.
+     */
+    function init(address _newOwner, string memory _repositoryName) public onlyOwner {
+        require(_newOwner != address(0));
+        owner = _newOwner;
+        repositoryName = _repositoryName;
+        emit Success(true);
+    }
+
+    /**
+     * @dev init the contract with the new owner and repository name and setting the delegator.
+     * @param _newOwner The address to be the contract owner.
+     * @param _repositoryName The repository name.
+     * @param _delegator The delegator address.
+     */
+    function initWithDelegator(address _newOwner, string memory _repositoryName, address _delegator) public onlyOwner {
+        require(_newOwner != address(0) && _delegator != address(0));
+        owner = _newOwner;
+        delegator = _delegator;
+        repositoryName = _repositoryName;
+        emit Success(true);
+    }
+
+    /**
+     * @dev update repository name.
+     * @param _repositoryName The new repository name.
+     */
+    function updateRepositoryName(string memory _repositoryName) public hasAuthority {
+        repositoryName = _repositoryName;
+        emit Success(true);
+    }
+
+    /**
+     * @dev update repository address.
+     * @param _oldRepositoryAddress The old repository address to verify, if the repository address length < 2 will considered to empty just only call for the first time.
+     * @param _newRepositoryAddress The new repository address.
+     */
+    function updateRepositoryAddress(string memory _oldRepositoryAddress, string memory _newRepositoryAddress) public {
+        require(msg.sender == owner || msg.sender == delegator || authedAccounts[msg.sender] == true);
+        bytes memory nra = bytes(_newRepositoryAddress);
+        require(nra.length > 1);
+        bytes memory ora = bytes(_oldRepositoryAddress);
+        bytes memory ra = bytes(repositoryAddress);
+        // if length < 2 considered to null.
+        require(ora.length < 2 && ra.length < 2 || keccak256(ora) == keccak256(ra));
+        repositoryAddress = _newRepositoryAddress;
+        emit Success(true);
+    }
+
+    /**
+     * @dev add the repository team member, those members can only update the updateRepositoryAddress.
+     * @param _member the member address.
+     */
+    function addTeamMember(address _member) public hasAuthority {
+        require(_member != address(0) && authedAccounts[_member] != true);
+        authedAccounts[_member] = true;
+        authedAccountList.push(_member);
+        authedAccountSize = authedAccountSize + 1;
+        emit Success(true);
+    }
+
+    /**
+     * @dev remove the repository team member.
+     * @param _member the member address.
+     */
+    function removeTeamMember(address _member) public hasAuthority {
+        require(_member != address(0) && authedAccounts[_member] == true);
+        delete authedAccounts[_member];
+        for (uint i=0; i&lt;authedAccountList.length; i++) {
+            if(authedAccountList[i] == _member){
+                delete authedAccountList[i];
+                break;
+            }
+        }
+        authedAccountSize = authedAccountSize - 1;
+        emit Success(true);
+    }
+
+    /**
+     * @dev change the repository owner.
+     * @param _newOwner the new owner for the contract.
+     */
+    function changeOwner(address _newOwner) public onlyOwner {
+        require(msg.sender == owner && _newOwner != address(0));
+        owner = _newOwner;
+        emit Success(true);
+    }
+
+    /**
+     * @dev setting the delegator for the repository.
+     * @param _delegator the delegator address.
+     */
+    function delegateTo(address _delegator) public hasAuthority {
+        delegator = _delegator;
+        emit Success(true);
+    }
+
+    /**
+     * @dev check the address if is the team member.
+     * @param _member the address to check in team member.
+     */
+    function hasTeamMember(address _member) public view returns (bool) {
+        return authedAccounts[_member];
+    }
+
+    /**
+     * @dev get the team member by index.
+     * @param _index the index from 0.
+     */
+    function teamMemberAtIndex(uint256 _index) public view returns (address) {
+        return authedAccountList[_index];
+    }
+}
+</code></pre>
+</p>
+
+
+<h2 id="contract-api">
+    <span class="bd-content-title">
+        智能合约 API
+    </span>
+</h2>
+
+<h3 id="constructor-api">
+    <span class="bd-content-title">
+        构造函数 API
+    </span>
+</h3>
+
+<p>
+    构造函数只需要传入一个 owner 的地址。
+</p>
+
+<h3 id="write-api">
+    <span class="bd-content-title">
+        写合约 API
+    </span>
+</h3>
+
+<p>
+    写合约的 API：
+    <li>
+        <code class="na">init(address _newOwner, string memory _repositoryName)</code>
+        <br>初始化合约，可以指定新的合约 Owner 及仓库名称。
+        <br>参数说明：
+        <br>_newOwner：新的合约 Owner。
+        <br>_repositoryName：仓库的名称。
+    </li>
+    <li>
+        <code class="na">initWithDelegator(address _newOwner, string memory _repositoryName, address _delegator)</code>
+        <br>初始化合约，可以指定新的合约 Owner 、仓库名称及代理人。
+        <br>参数说明：
+        <br>_newOwner：新的合约 Owner。
+        <br>_repositoryName：仓库的名称。
+        <br>_delegator：智能合约操作代理人。
+    </li>
+    <li>
+        <code class="na">updateRepositoryName(string memory _repositoryName)</code>
+        <br>修改仓库名称。
+        <br>参数说明：
+        <br>_repositoryName：仓库的名称。
+    </li>
+    <li>
+        <code class="na">updateRepositoryAddress(string memory _oldRepositoryAddress, string memory _newRepositoryAddress)</code>
+        <br>修改仓库的地址。
+        <br>参数说明：
+        <br>_oldRepositoryAddress：仓库的原地址。
+        <br>_newRepositoryAddress：仓库的新地址。
+    </li>
+    <li>
+        <code class="na">addTeamMember(address _member)</code>
+        <br>添加团队成员，允许成员直接提交代码到仓库。
+        <br>参数说明：
+        <br>_member：成员地址。
+    </li>
+    <li>
+        <code class="na">removeTeamMember(address _member)</code>
+        <br>删除团队成员。
+        <br>参数说明：
+        <br>_member：成员地址。
+    </li>
+    <li>
+        <code class="na">changeOwner(address _newOwner)</code>
+        <br>转让本仓库给他拥有者。
+        <br>参数说明：
+        <br>_newOwner：新的仓库拥有者。
+    </li>
+    <li>
+        <code class="na">delegateTo(address _delegator)</code>
+        <br>设置仓库的代理人，可以执行智能合约大部分方法。
+        <br>参数说明：
+        <br>_delegator：仓库的代理人。
+    </li>
+</p>
+
+<h3 id="read-api">
+    <span class="bd-content-title">
+        读合约 API
+    </span>
+</h3>
+
+<p>
+    读合约的 API：
+    <li>
+        <code class="na">repositoryName</code>
+        <br>获得仓库名称。
+    </li>
+    <li>
+        <code class="na">repositoryAddress</code>
+        <br>获得仓库地址。
+    </li>
+    <li>
+        <code class="na">owner</code>
+        <br>获得仓库所有者。
+    </li>
+    <li>
+        <code class="na">delegator</code>
+        <br>获得仓库代理人。
+    </li>
+    <li>
+        <code class="na">authedAccounts(address)</code>
+        <br>是否为团队成员。
+        <br>参数说明：
+        <br>address：帐户地址。
+    </li>
+    <li>
+        <code class="na">authedAccountList(int)</code>
+        <br>获得指定顺序的团队成员地址。
+        <br>参数说明：
+        <br>int：顺序编码从0开始。
+    </li>
+    <li>
+        <code class="na">authedAccountSize</code>
+        <br>获得团队成员数量。
+        <br>参数说明：
+        <br>int：顺序编码从0开始。
+    </li>
+    <li>
+        <code class="na">hasTeamMember(address)</code>
+        <br>该地址是否为团队成员。
+        <br>参数说明：
+        <br>address：帐户地址。
+    </li>
+    <li>
+        <code class="na">teamMemberAtIndex(int)</code>
+        <br>获得指定顺序的团队成员地址。
+        <br>参数说明：
+        <br>int：顺序编码从0开始。
+    </li>
+</p>

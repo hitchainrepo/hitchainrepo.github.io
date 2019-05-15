@@ -1,0 +1,113 @@
+<h1 class="bd-title" id="content">使用说明</h1>
+<p class="bd-lead">
+    hit 使用说明
+</p>
+
+<h2 id="hit-git">
+    <span class="bd-content-title">
+        hit 与 git 兼容
+    </span>
+</h2>
+
+<p>
+    hit 在很大程度上兼容 git 命令，目前 hit 可以正常执行所有 git 命令。
+    使用方式如下：
+<pre class="highlight"><code class="language-sh na">
+hit [git command options]
+</code></pre>
+</p>
+
+
+<h2 id="hit-usage">
+    <span class="bd-content-title">
+        hit 快速入门
+    </span>
+</h2>
+
+<p>
+    hit 个性功能使用。
+</p>
+
+<h3 id="jdk-setup">
+    <span class="bd-content-title">
+        JDK 环境
+    </span>
+</h3>
+
+<p>
+    目前 hit 只提供 Java 版本，运行需要 JDK 8 以上版本的支持。
+    安装 JDK 8 以上版本<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 下载</a>
+</p>
+
+<h3 id="hit-setup">
+    <span class="bd-content-title">
+        hit 设置
+    </span>
+</h3>
+
+<p>
+    在启用 hit 功能前需要对 hit 进行配置。配置分4部分：帐户、密钥对、存储、合约入口。
+    初始尝试 hit 可以尝试使用如下步骤进行配置：
+</p>
+<pre class="highlight"><code class="language-sh na">
+hit cfg help
+hit cfg create              your-password-here
+hit cfg account    add acc1 your-password-here
+hit cfg rsa        add rsa1 your-password-here
+hit cfg storage    add sto1 121.40.127.45
+hit cfg repository add rep1 https://121.40.127.45:1443
+</code></pre>
+
+<h3 id="hit-init">
+    <span class="bd-content-title">
+        hit 创建仓库
+    </span>
+</h3>
+
+<p>
+    仓库一个新的仓库
+</p>
+<pre class="highlight"><code class="language-sh na">
+mkdir hello-world
+cd    hello-world
+hit   init
+echo  "hello world" > helloworld.txt
+hit   commit -m "your comment"
+hit   remote add origin hit://hello-world.git
+hit   push
+</code></pre>
+<p>
+    仓库创建过程输出如下：
+</p>
+<pre class="highlight"><code class="language-sh na">
+$&gt; mkdir hello-world
+$&gt; cd hello-world
+$&gt; hit init
+Try to register HitTransportProtocol...
+Register HitTransportProtocol done.
+Initialized empty Git repository in /temppath/hello-world/.git
+$&gt; echo  "hello world" > helloworld.txt
+$&gt; hit   commit -m "your comment"
+Try to register HitTransportProtocol...
+Register HitTransportProtocol done.
+[master a56d88a231e569e719ffc1acdcfc92e546ca835d] your comment
+$&gt; hit   remote add origin hit://hello-world.git
+Try to register HitTransportProtocol...
+Register HitTransportProtocol done.
+$&gt; hit   push
+Try to register HitTransportProtocol...
+Register HitTransportProtocol done.
+Repository contract is created on address:0xce934d6a70f2741ba4e0bbce6be1681718048fb7
+Enter hit config password:
+Repository information local directory=/temppath/hello-world/.git, index=http://121.40.127.45:8080/ipfs/QmZk6k7DaLY4WQczCXVryfGzP7kxj5TPeXDEGioDEuBQkw, address=https://ropsten.etherscan.io/address/0xce934d6a70f2741ba4e0bbce6be1681718048fb7
+Update objects/hit/gitfile.idx
+Update objects/hit/projectinfo
+Update remote origin url to hit://0xce934d6a70f2741ba4e0bbce6be1681718048fb7.git
+Everything up-to-date
+</code></pre>
+
+<p>
+    可以看到仓库的地址更新为：<code class="ge">hit://0xce934d6a70f2741ba4e0bbce6be1681718048fb7.git</code>
+    <br>智能合约地址：<a href="https://ropsten.etherscan.io/address/0xce934d6a70f2741ba4e0bbce6be1681718048fb7">https://ropsten.etherscan.io/address/0xce934d6a70f2741ba4e0bbce6be1681718048fb7</a>
+    <br>文件索引存储：<a href="http://121.40.127.45:8080/ipfs/QmZk6k7DaLY4WQczCXVryfGzP7kxj5TPeXDEGioDEuBQkw">http://121.40.127.45:8080/ipfs/QmZk6k7DaLY4WQczCXVryfGzP7kxj5TPeXDEGioDEuBQkw</a>
+</p>
