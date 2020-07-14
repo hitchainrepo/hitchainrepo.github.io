@@ -1,0 +1,69 @@
+<h1 class="bd-title" id="content">Development Guide</h1>
+<p class="bd-lead">
+    Development Guide
+</p>
+
+<h2 id=" dev-start">
+    <span class="bd-content-title">
+        Development Guide
+    </span>
+</h2>
+
+<h3 id="checkout-source">
+    <span class="bd-content-title">
+        Check out source codes
+    </span>
+</h3>
+
+<p>
+    Check out hit-java from Github.
+<pre class="highlight"><code class="language-sh na">
+git clone https://github.com/hitchainrepo/hit-java.git
+git checkout -b hit-0.0.5-5.2.1.2 origin/hit-0.0.5-5.2.1.2
+</code></pre>
+<a href="https://github.com/hitchainrepo/hit-java/tree/hit-0.0.5-5.2.1.2">Source Codes</a>
+</p>
+
+<h3 id="maven-build">
+    <span class="bd-content-title">
+        Maven Build
+    </span>
+</h3>
+
+<p>
+<pre class="highlight"><code class="language-sh na">
+cd hit-java
+mvn clean install -DskipTests
+</code></pre>
+</p>
+
+<h3 id="modules-desc">
+    <span class="bd-content-title">
+        Introduce fo Modules
+    </span>
+</h3>
+
+<p>
+    hit and two modules to the project:
+    <li><code class="ge">org.hitchain.core</code>
+        hit core module
+    </li>
+    <li><code class="ge">org.hitchain.core.test</code>
+        hit test module
+    </li>
+    <li><code class="ge">org.hitchain.pgm</code>
+        hit cli module
+    </li>
+</p>
+
+<h3 id="modules-dev">
+    <span class="bd-content-title">
+        Module Design
+    </span>
+</h3>
+
+<p>
+    In order to minimize the changes to the original JGit source code, hit mainly adopts reflection injection for function implantation. For the code modification part of JGit, use the specific identification<code class="ge">/*add by hit*//*end of add*/</code>,
+    you can search the code identification of the whole project, you can know the part of the source code modification of JGit.
+</p>
+
