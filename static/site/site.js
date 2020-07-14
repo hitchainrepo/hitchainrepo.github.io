@@ -3,7 +3,7 @@ var CTX_ROOT=window["CTX_ROOT"]||"";
 var DOC_ROOT=window["DOC_ROOT"]||"";
 var pathname = (window.location.pathname).replace('//','/');
 var isEn=pathname.indexOf('/en/')==0||pathname.indexOf('/hitchainrepo.github.io/en/')==0;
-DOC_ROOT = isEn?(DOC_ROOT+'en/'):DOC_ROOT;
+//DOC_ROOT = isEn?(DOC_ROOT+'en/'):DOC_ROOT;
 $(document).ready(function(){
     {
         loadTemplate($("header"), DOC_ROOT+"site/header.html");
