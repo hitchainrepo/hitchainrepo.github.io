@@ -1,0 +1,79 @@
+<h1 class="bd-title" id="content">使用说明</h1>
+<p class="bd-lead">
+    hit 使用说明
+</p>
+
+<h2 id="hit-git">
+    <span class="bd-content-title">
+        hit 与 git 兼容
+    </span>
+</h2>
+
+<p>
+    hit 在很大程度上兼容 git 命令，目前 hit 可以正常执行所有 git 命令。
+    使用方式如下：
+<pre class="highlight"><code class="language-sh na">
+hit [git command options]
+</code></pre>
+</p>
+
+
+<h2 id="hit-usage">
+    <span class="bd-content-title">
+        hit 快速入门
+    </span>
+</h2>
+
+<p>
+    hit 个性功能使用。
+</p>
+
+<h3 id="jdk-setup">
+    <span class="bd-content-title">
+        JDK 环境
+    </span>
+</h3>
+
+<p>
+    目前 hit 只提供 Java 版本，运行需要 JDK 8 以上版本的支持。
+    安装 JDK 8 以上版本<a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK 下载</a>
+</p>
+
+<h3 id="hit-setup">
+    <span class="bd-content-title">
+        hit 设置
+    </span>
+</h3>
+
+<p>
+    在启用 hit 功能前需要对 hit 进行配置。包括：创建 Hit 配置、获得 ETH、创建智能合约、添加仓库。
+    初始尝试 hit 可以尝试使用如下步骤进行配置：
+</p>
+<pre class="highlight"><code class="language-sh na">
+hit cfg create
+hit token request-test
+hit cfg contract   deploy main
+hit contract add-repository --auto-rename
+</code></pre>
+
+<h3 id="hit-init">
+    <span class="bd-content-title">
+        hit 创建仓库
+    </span>
+</h3>
+
+<p>
+    仓库一个新的仓库
+</p>
+<pre class="highlight"><code class="language-sh na">
+mkdir hello-world
+cd    hello-world
+hit   init
+echo  "hello world" > helloworld.txt
+hit   commit -m "your comment"
+hit   contract add-repository --auto-rename
+hit   push
+</code></pre>
+<p>
+    仓库创建过程可以观看视频：<a href="https://weibo.com/6625287274/I1Sm4e9sQ" target="_blank">Video</a>
+</p>

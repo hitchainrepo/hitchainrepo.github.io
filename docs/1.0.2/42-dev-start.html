@@ -1,0 +1,69 @@
+<h1 class="bd-title" id="content">开发向导</h1>
+<p class="bd-lead">
+    开发向导
+</p>
+
+<h2 id=" dev-start">
+    <span class="bd-content-title">
+        开发向导
+    </span>
+</h2>
+
+<h3 id="checkout-source">
+    <span class="bd-content-title">
+        检出源码
+    </span>
+</h3>
+
+<p>
+    从 Github 仓库中检出 hit-java 源码。
+<pre class="highlight"><code class="language-sh na">
+git clone https://github.com/hitchainrepo/hit-java.git
+</code></pre>
+<a href="https://github.com/hitchainrepo/hit-java">源码</a>
+</p>
+
+<h3 id="maven-build">
+    <span class="bd-content-title">
+        Maven 构建
+    </span>
+</h3>
+
+<p>
+<pre class="highlight"><code class="language-sh na">
+cd hit-java
+mvn clean install -DskipTests
+</code></pre>
+</p>
+
+<h3 id="modules-desc">
+    <span class="bd-content-title">
+        模块描述
+    </span>
+</h3>
+
+<p>
+    hit 在 jgit 项目模块的基础上添加两个模块：
+    <li><code class="ge">org.hitchain.core</code>
+        hit的主要核心代码
+    </li>
+    <li><code class="ge">org.hitchain.core.test</code>
+        hit用于测试代码
+    </li>
+    <li><code class="ge">org.hitchain.pgm</code>
+        hit cli命令构建模块
+    </li>
+</p>
+
+<h3 id="modules-dev">
+    <span class="bd-content-title">
+        模块间设计
+    </span>
+</h3>
+
+<p>
+    为了尽量减少对原有的 jgit 源代码的改动，hit 功能主要采用反射注入的方式进行功能植入。
+    对于 jgit 的代码修改部分，采用特定的标识<code class="ge">/*add by hit*//*end of add*/</code>，
+    可以整个项目进行搜索代码标识，就可以知到对 jgit 源码修改的部分。
+</p>
+

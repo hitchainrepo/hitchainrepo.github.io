@@ -1,0 +1,88 @@
+<h1 class="bd-title" id="content">Build From Source</h1>
+<p class="bd-lead">
+    Build hit From Source.
+</p>
+
+<h2 id="setup-environment">
+    <span class="bd-content-title">
+        Prepare Installation Environment
+    </span>
+</h2>
+
+<p>
+    Use Java, platform cross.
+</p>
+
+<h3 id="setup-jdk">
+    <span class="bd-content-title">
+        Install JDK8+
+    </span>
+</h3>
+
+<p>
+    Install JDK 8 (build 1.8.0_191-b12) and above version.
+    <a href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">JDK Download</a>
+</p>
+
+<h3 id="setup-maven">
+    <span class="bd-content-title">
+        Install Maven
+    </span>
+</h3>
+
+<p>
+    Install Maven 3.5.2 and above
+    <a href="http://maven.apache.org/download.cgi">Maven Download</a>
+</p>
+
+
+<h2 id="checkout-install">
+    <span class="bd-content-title">
+        Check out source codes and install
+    </span>
+</h2>
+
+<p>
+    Install hit by source codes.
+</p>
+
+<h3 id="checkout-source">
+    <span class="bd-content-title">
+        Check out source codes.
+    </span>
+</h3>
+
+<p>
+    Check out hit-java source codes from Github.
+<pre class="highlight"><code class="language-sh na">
+git clone https://github.com/hitchainrepo/hit-java.git
+</code></pre>
+<a href="https://github.com/hitchainrepo/hit-java">Source Codes</a>
+</p>
+
+<h3 id="maven-build">
+    <span class="bd-content-title">
+        Maven Build
+    </span>
+</h3>
+
+<p>
+<pre class="highlight"><code class="language-sh na">
+cd hit-java
+mvn clean install -DskipTests
+</code></pre>
+</p>
+
+<h3 id="dist-hit">
+    <span class="bd-content-title">
+        hit
+    </span>
+</h3>
+
+<p>
+copy hit to exe dirs, such as: /bin or /usr/bin. Or you can copy to any directory and setting the PATH.
+<pre class="highlight"><code class="language-sh na">
+cd org.eclipse.jgit.pgm/target
+cp hit YOUR_BIN_DIR
+</code></pre>
+</p>

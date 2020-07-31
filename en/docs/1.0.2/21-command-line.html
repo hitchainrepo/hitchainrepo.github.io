@@ -1,0 +1,807 @@
+<h1 class="bd-title" id="content">Commands</h1>
+<p class="bd-lead">
+    hit Custom Commands
+</p>
+
+<h2 id="hit-cmd">
+    <span class="bd-content-title">
+        hit Commands
+    </span>
+</h2>
+
+<h3 id="hit-cfg-create">
+    <span class="bd-content-title">
+        Create hit configuration
+    </span>
+</h3>
+
+<p>
+    At first using hit you need to create hit configuration: <code class="ge">hit cfg create</code>
+<pre><code class="language-sh na">
+$&gt; hit cfg create
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Please write down the mnemonic words(for recover your password)!!! :
+alert maze mimic half fat depth motor trigger tape that ribbon also
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Hit config is updated.
+</code></pre>
+When you create hit configuration, you need a password and generate a password mnemonic for password retrieval.
+</p>
+
+<h3 id="hit-cfg-recover">
+    <span class="bd-content-title">
+        hit password recover
+    </span>
+</h3>
+
+<p>
+    Recover by password mnemonic.
+</p>
+
+<p>
+<li>hit password recover command</li>
+<br><code class="ge">hit cfg recover password|account-pri-key|rsa-pri-key</code>
+</p>
+
+<p>
+<li>Recover Password</li>
+<br><code class="ge">hit cfg recover password</code>
+<br>Input: password mnemonic
+<br>Parameters:
+</p>
+
+<p>
+<li>Recover Private Key</li>
+<br><code class="ge">hit cfg recover account-pri-key</code>
+<br>Parameters:
+</p>
+
+<p>
+<li>Recover RSA Private Key</li>
+<br><code class="ge">hit cfg recover rsa-pri-key</code>
+<br>Parameters:
+</p>
+<!--END-->
+<h3 id="hit-cfg-account">
+    <span class="bd-content-title">
+        hit Account management
+    </span>
+</h3>
+
+<p>
+    hit can management multiple accounts you can switch to different account.
+    This account use to contact with smart contract.
+</p>
+
+<p>
+<li>hit Account Commands</li>
+<br><code class="ge">hit cfg account [add|remove] name [priKey] [pubKey] password</code>
+<br><code class="ge">hit cfg account set name</code>
+</p>
+
+<p>
+<li>Create Account</li>
+<br><code class="ge">hit cfg account add name [priKey] [pubKey] password</code>
+<br>Parameters:
+<br>name: [Required], Account name, aA-zZ and numbers
+<br>priKey, pubKey: [Option], private key and public key is require when adding exists account
+<br>password: [Required], the password of hit cfg
+</p>
+
+<p>
+<li>Delete account</li>
+<br><code class="ge">hit cfg account remove name</code>
+<br>Parameters: 
+<br>name: [Required], account name
+</p>
+
+<p>
+<li>Setting default account</li>
+<br><code class="ge">hit cfg account set name</code>
+<br>Parameters: 
+<br>name: [Required], account name
+</p>
+
+<p>
+<li>List add accounts</li>
+<br><code class="ge">hit cfg account</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-rsa">
+    <span class="bd-content-title">
+        hit Keys Management
+    </span>
+</h3>
+
+<p>
+    hit can management multiple accounts, and you can switch to different accounts.
+    Public key and private key pair is use to private repository encrypt.
+</p>
+
+<p>
+<li>hit Key pair commands</li>
+<br><code class="ge">hit cfg rsa [add|remove] name [priKey] [pubKey] password</code>
+<br><code class="ge">hit cfg rsa set name</code>
+</p>
+
+<p>
+<li>Create key pair</li>
+<br><code class="ge">hit cfg rsa add name [priKey] [pubKey] password</code>
+<br>Parameters: 
+<br>name: [Required], key pair name, aA-zZ and numbers
+<br>priKey, pubKey: [Option], private key and public key is require when adding exists key pair
+<br>password: [Required], the password of hit cfg
+</p>
+
+<p>
+<li>Delete key pair</li>
+<br><code class="ge">hit cfg rsa remove name</code>
+<br>Parameters: 
+<br>name: [Required], name of key pair
+</p>
+
+<p>
+<li>Setting default key pair</li>
+<br><code class="ge">hit cfg rsa set name</code>
+<br>Parameters: 
+<br>name: [Required], name of key pair
+</p>
+
+<p>
+<li>List all key pairs</li>
+<br><code class="ge">hit cfg rsa</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-storage">
+    <span class="bd-content-title">
+        hit Storage configuration management
+    </span>
+</h3>
+
+<p>
+    hit can management multiple storage configurations, you can switch to different storage configuration.
+    The storage configuration is use to store repository contents.
+</p>
+
+<p>
+<li>hit Storage commands</li>
+<br><code class="ge">hit cfg storage [add|remove] name [url]</code>
+<br><code class="ge">hit cfg storage set name</code>
+</p>
+
+<p>
+<li>Create storage configuration</li>
+<br><code class="ge">hit cfg storage add name url</code>
+<br>Parameters: 
+<br>name: [Required], storage config name, aA-zZ and numbers
+<br>url: [Required],  storage url
+</p>
+
+<p>
+<li>Delete storage config</li>
+<br><code class="ge">hit cfg storage remove name</code>
+<br>Parameters: 
+<br>name: [Required], the name of storage config
+</p>
+
+<p>
+<li>Setting default storage config</li>
+<br><code class="ge">hit cfg storage set name</code>
+<br>Parameters: 
+<br>name: [Required], the name of storage config
+</p>
+
+<p>
+<li>List all storage config</li>
+<br><code class="ge">hit cfg storage</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-repository">
+    <span class="bd-content-title">
+        hit Repository config management
+    </span>
+</h3>
+
+<p>
+    hit can mangement multiple repository config, you can switch to different repository config.
+    The repository configuration is use to invoke smart contract.
+</p>
+
+<p>
+<li>hit Repsoitory config commands</li>
+<br><code class="ge">hit cfg repository [add|remove] name [url]</code>
+<br><code class="ge">hit cfg repository set name</code>
+</p>
+
+<p>
+<li>Create repository config</li>
+<br><code class="ge">hit cfg repository add name url</code>
+<br>Parameters: 
+<br>name: [Required], repository config name, aA-zZ and numbers
+<br>url: [Required],  repository url, ethereum api url
+</p>
+
+<p>
+<li>Delete repository config</li>
+<br><code class="ge">hit cfg repository remove name</code>
+<br>Parameters: 
+<br>name: [Required], The name of repository config
+</p>
+
+<p>
+<li>Setting default repository config</li>
+<br><code class="ge">hit cfg repository set name</code>
+<br>Parameters: 
+<br>name: [Required], The name of repository config
+</p>
+
+<p>
+<li>List all repository configs</li>
+<br><code class="ge">hit cfg repository</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-chain">
+    <span class="bd-content-title">
+        hit Blockchain config
+    </span>
+</h3>
+
+<p>
+    hit can maintain multiple blockchain config, you can switch to different blockchain config.
+</p>
+
+<p>
+<li>hit Blockchain  config Commands</li>
+<br><code class="ge">hit cfg chain add    name url</code>
+<br><code class="ge">hit cfg chain remove name</code>
+<br><code class="ge">hit cfg chain set    name</code>
+</p>
+
+<p>
+<li>Create blockchain config</li>
+<br><code class="ge">hit cfg chain add    name url</code>
+<br>Parameters: 
+<br>name: [Required], blockchain config name, aA-zZ and numbers
+<br>url: [Required],  blockchain url
+</p>
+
+<p>
+<li>Delete blockchain config</li>
+<br><code class="ge">hit cfg chain remove name</code>
+<br>Parameters: 
+<br>name: [Required], The name of blockchain config
+</p>
+
+<p>
+<li>Setting default blockchain config</li>
+<br><code class="ge">hit cfg chain set name</code>
+<br>Parameters: 
+<br>name: [Required], The name of blockchain config
+</p>
+
+<p>
+<li>List all blockchain configs</li>
+<br><code class="ge">hit cfg chain</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-chainapi">
+    <span class="bd-content-title">
+        hit blockchain api config
+    </span>
+</h3>
+
+<p>
+    hit can maintain multiple blockchain api config, you can switch to different api config.
+    This is use to access blockchain info, such as repository and history.
+</p>
+
+<p>
+<li>hit blockchain api config</li>
+<br><code class="ge">hit cfg chainapi add    name url</code>
+<br><code class="ge">hit cfg chainapi remove name</code>
+<br><code class="ge">hit cfg chainapi set    name</code>
+</p>
+
+<p>
+<li>Create blockchain api config</li>
+<br><code class="ge">hit cfg chainapi add    name url</code>
+<br>Parameters: 
+<br>name: [Required], blockchain api config name, aA-zZ and numbers
+<br>url: [Required],  blockchain api url entrance
+</p>
+
+<p>
+<li>Delete blockchain api config</li>
+<br><code class="ge">hit cfg chainapi remove name</code>
+<br>Parameters: 
+<br>name: [Required], The name of blockchain api config
+</p>
+
+<p>
+<li>Setting default blockchain api config</li>
+<br><code class="ge">hit cfg chainapi set name</code>
+<br>Parameters: 
+<br>name: [Required], The name of blockchain api config
+</p>
+
+<p>
+<li>List all blockchain api config</li>
+<br><code class="ge">hit cfg chainapi</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-gas">
+    <span class="bd-content-title">
+        Smart contract GAS config
+    </span>
+</h3>
+
+<p>
+    hit can maintain multiple smart contract GAS config, you can switch to different config.
+    This GAS config use to invoke smart contract, including the smart contract deploy and write.
+</p>
+
+<p>
+<li>GAS config Commands</li>
+<br><code class="ge">hit cfg gas add    name deployGas deployGwei writeGas writeGwei</code>
+<br><code class="ge">hit cfg gas remove name</code>
+<br><code class="ge">hit cfg gas set    name</code>
+</p>
+
+<p>
+<li>Create GAS config</li>
+<br><code class="ge">hit cfg gas add    name deployGas deployGwei writeGas writeGwei</code>
+<br>Parameters: 
+<br>name: [Required], The GAS config name, aA-zZ and numbers
+<br>deployGas: [Required],  the GAS for contract deploy
+<br>deployGwei: [Required],  the GWei for contract deploy
+<br>writeGas: [Required],  the GAS for contract write
+<br>writeGwei: [Required],  the GWei for contract write
+</p>
+
+<p>
+<li>Delete GAS config</li>
+<br><code class="ge">hit cfg gas remove name</code>
+<br>Parameters: 
+<br>name: [Required], the GAS config name
+</p>
+
+<p>
+<li>Setting default GAS config</li>
+<br><code class="ge">hit cfg gas set name</code>
+<br>Parameters: 
+<br>name: [Required], the name of GAS config
+</p>
+
+<p>
+<li>List all GAS configs</li>
+<br><code class="ge">hit cfg gas</code>
+</p>
+<!--END-->
+<h3 id="hit-cfg-contract">
+    <span class="bd-content-title">
+        Smart contract address config
+    </span>
+</h3>
+
+<p>
+    hit can maintain multiple smart contract address config, you can switch to different config.
+    You can also setting contract address or create contract address by manual.
+</p>
+
+<p>
+<li>Contract config Commands</li>
+<br><code class="ge">hit cfg contract add    name address</code>
+<br><code class="ge">hit cfg contract deploy name</code>
+<br><code class="ge">hit cfg contract remove name</code>
+<br><code class="ge">hit cfg contract set    name</code>
+</p>
+
+<p>
+<li>Create contract config</li>
+<br><code class="ge">hit cfg contract add    name address</code>
+<br>Parameters: 
+<br>name: [Required], contract config name, aA-zZ and numbers
+<br>address: [Required],  contract address
+</p>
+
+<p>
+<li>Create new contract</li>
+<br><code class="ge">hit cfg contract deploy  name</code>
+<br>Parameters: 
+<br>name: [Required], contract config name, aA-zZ and numbers
+</p>
+
+<p>
+<li>Delete contract config</li>
+<br><code class="ge">hit cfg contract remove name</code>
+<br>Parameters: 
+<br>name: [Required], The name of contract config
+</p>
+
+<p>
+<li>Setting default contract config</li>
+<br><code class="ge">hit cfg contract set name</code>
+<br>Parameters: 
+<br>name: [Required], The name of contract config
+</p>
+
+<p>
+<li>List all contract configs</li>
+<br><code class="ge">hit cfg contract</code>
+</p>
+<!--END-->
+<h3 id="hit-repository-name">
+    <span class="bd-content-title">
+        Query repository names
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>Query repository name</li>
+<br><code class="ge">hit repository-name uri</code>
+<br>Parameters: 
+<br>address: [Required], contract address
+</p>
+<!--END-->
+<h3 id="hit-contract">
+    <span class="bd-content-title">
+        hit contract operations
+    </span>
+</h3>
+
+<p>
+    hit contract can access contract functions
+</p>
+
+<p>
+<li>hit contract operations</li>
+<br><code class="ge">hit contract help</code>
+<br><code class="ge">hit contract add-repository [--auto-rename] [repositoryName]</code>
+<br><code class="ge">hit contract user</code>
+<br><code class="ge">hit contract email</code>
+<br><code class="ge">hit contract max-id</code>
+<br><code class="ge">hit contract owner</code>
+<br><code class="ge">hit contract id   [repositoryName]</code>
+<br><code class="ge">hit contract name [repositoryNameForUpdate]</code>
+<br><code class="ge">hit contract url  [repositoryUrlForUpdate]</code>
+<br><code class="ge">hit contract contains-[delegator|member|pr-member] address</code>
+<br><code class="ge">hit contract count-[delegator|member|pr-member|pr-auth|pr-comm|started]</code>
+<br><code class="ge">hit contract index-of-[delegator|member|pr-member|pr-auth|pr-comm|started] index</code>
+<br><code class="ge">hit contract is-[delegator|member|pr-member|pr-auth|pr-comm]-disable</code>
+<br><code class="ge">hit contract disable-[delegator|member|pr-member|pr-auth|pr-comm]</code>
+<br><code class="ge">hit contract enable-[delegator|member|pr-member|pr-auth|pr-comm]</code>
+<br><code class="ge">hit contract update-repository  repositoryName</code>
+<br><code class="ge">hit contract update-url         repositoryUrl</code>
+<br><code class="ge">hit contract [add|remove]-[delegator|member|pr-member]      address</code>
+<br><code class="ge">hit contract add-pr                      prUrl</code>
+<br><code class="ge">hit contract add-started                 repositoryUrl</code>
+<br><code class="ge">hit contract remove-started              index</code>
+<br><code class="ge">hit contract list-[repository|history-url|member|pr-member|pr|pr-auth|pr-comm]</code>
+</p>
+
+<p>
+<li>Add repository</li>
+<br><code class="ge">hit contract add-repository [--auto-rename] [repositoryName]</code>
+<br>Parameters: 
+<br>--auto-rename: [Option], auto rename the repository if name exists
+<br>repositoryName: [Option], repository name
+</p>
+
+<p>
+<li>Get contract user</li>
+<br><code class="ge">hit contract user</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Get contract email</li>
+<br><code class="ge">hit contract email</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Get contract max id</li>
+<br><code class="ge">hit contract max-id</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Get contract owner</li>
+<br><code class="ge">hit contract owner</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Get repository name</li>
+<br><code class="ge">hit contract id   [repositoryName]</code>
+<br>Parameters: 
+<br>repositoryName: [Option], if the repository name is provided will return the repository id, otherwise return current repository id
+</p>
+
+<p>
+<li>Get or modify repository name</li>
+<br><code class="ge">hit contract name [repositoryNameForUpdate]</code>
+<br>Parameters: 
+<br>repositoryNameForUpdate: [Option], if the repository name is provided will change the repository name, otherwise return repository name
+</p>
+
+<p>
+<li>Get or modify repository Hash</li>
+<br><code class="ge">hit contract url  [repositoryUrlForUpdate]</code>
+<br>Parameters: 
+<br>repositoryUrlForUpdate: [Option], if the repository hash is provided will change the repository hash, otherwise return repository hash
+</p>
+
+<p>
+<li>Test [delegator|member|pr-member] is exists</li>
+<br><code class="ge">hit contract contains-[delegator|member|pr-member] address</code>
+<br><code class="ge">hit contract contains-delegator address</code>
+<br><code class="ge">hit contract contains-member address</code>
+<br><code class="ge">hit contract contains-pr-member address</code>
+<br>Parameters: 
+<br>address: [Required], account address
+</p>
+
+<p>
+<li>Get contract [delegator|member|pr-member|pr-auth|pr-comm|started] count</li>
+<br><code class="ge">hit contract count-[delegator|member|pr-member|pr-auth|pr-comm|started]</code>
+<br><code class="ge">hit contract contains-delegator address</code>
+<br><code class="ge">hit contract contains-member address</code>
+<br><code class="ge">hit contract contains-pr-member address</code>
+<br><code class="ge">hit contract contains-pr-auth address</code>
+<br><code class="ge">hit contract contains-pr-comm address</code>
+<br><code class="ge">hit contract contains-started address</code>
+<br>Parameters: 
+<br>address: [Required], account address
+</p>
+
+<p>
+<li>Get contract's Index of [delegator|member|pr-member|pr-auth|pr-comm|started] address</li>
+<br><code class="ge">hit contract index-of-[delegator|member|pr-member|pr-auth|pr-comm|started] index</code>
+<br><code class="ge">hit contract index-of-delegator index</code>
+<br><code class="ge">hit contract index-of-member index</code>
+<br><code class="ge">hit contract index-of-pr-member index</code>
+<br><code class="ge">hit contract index-of-pr-auth index</code>
+<br><code class="ge">hit contract index-of-pr-comm index</code>
+<br><code class="ge">hit contract index-of-started index</code>
+<br>Parameters: 
+<br>index: [Required], the index of account address, when add [delegator|member|pr-member|pr-auth|pr-comm|started] will add a record and use index as record id
+</p>
+
+<p>
+<li>Get contract [delegator|member|pr-member|pr-auth|pr-comm] is disabled</li>
+<br><code class="ge">hit contract is-[delegator|member|pr-member|pr-auth|pr-comm]-disable</code>
+<br><code class="ge">hit contract is-delegator-disable</code>
+<br><code class="ge">hit contract is-member-disable</code>
+<br><code class="ge">hit contract is-pr-member-disable</code>
+<br><code class="ge">hit contract is-pr-auth-disable</code>
+<br><code class="ge">hit contract is-pr-comm-disable</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Disable contract [delegator|member|pr-member|pr-auth|pr-comm] features</li>
+<br><code class="ge">hit contract disable-[delegator|member|pr-member|pr-auth|pr-comm]</code>
+<br><code class="ge">hit contract disable-delegator</code>
+<br><code class="ge">hit contract disable-member</code>
+<br><code class="ge">hit contract disable-pr-member</code>
+<br><code class="ge">hit contract disable-pr-auth</code>
+<br><code class="ge">hit contract disable-pr-comm</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Enable contract [delegator|member|pr-member|pr-auth|pr-comm] features</li>
+<br><code class="ge">hit contract enable-[delegator|member|pr-member|pr-auth|pr-comm]</code>
+<br><code class="ge">hit contract enable-delegator</code>
+<br><code class="ge">hit contract enable-member</code>
+<br><code class="ge">hit contract enable-pr-member</code>
+<br><code class="ge">hit contract enable-pr-auth</code>
+<br><code class="ge">hit contract enable-pr-comm</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Update repository name</li>
+<br><code class="ge">hit contract update-repository  repositoryName</code>
+<br>Parameters: 
+<br>repositoryName: [Required], new repository name
+</p>
+
+<p>
+<li>Update repository Hash</li>
+<br><code class="ge">hit contract update-url         repositoryUrl</code>
+<br>Parameters: 
+<br>repositoryUrl: [Required], update repository Hash
+</p>
+
+<p>
+<li>Add or delete [delegator|member|pr-member] address</li>
+<br><code class="ge">hit contract [add|remove]-[delegator|member|pr-member] address</code>
+<br><code class="ge">hit contract add-delegator address</code>
+<br><code class="ge">hit contract remove-delegator address</code>
+<br><code class="ge">hit contract add-member address</code>
+<br><code class="ge">hit contract remove-member address</code>
+<br><code class="ge">hit contract add-pr-member address</code>
+<br><code class="ge">hit contract remove-pr-member address</code>
+<br>Parameters: 
+<br>address: [Required], account address
+</p>
+
+<p>
+<li>Add PullRequest storage Hash</li>
+<br><code class="ge">hit contract add-pr prUrl</code>
+<br>Parameters: 
+<br>prUrl: [Required], PullRequest storage Hash
+</p>
+
+<p>
+<li>Add Started repository</li>
+<br><code class="ge">hit contract add-started repositoryUrl</code>
+<br>Parameters: 
+<br>repositoryUrl: [Required], repository URL
+</p>
+
+<p>
+<li>Delete Started repository</li>
+<br><code class="ge">hit contract remove-started index</code>
+<br>Parameters: 
+<br>index: [Required], the started repository index/id
+</p>
+
+<p>
+<li>List [repository|history-url|member|pr-member|pr|pr-auth|pr-comm]</li>
+<br><code class="ge">hit contract list-[repository|history-url|member|pr-member|pr|pr-auth|pr-comm]</code>
+<br><code class="ge">hit contract list-repository</code>
+<br><code class="ge">hit contract list-history-url</code>
+<br><code class="ge">hit contract list-member</code>
+<br><code class="ge">hit contract list-pr-member</code>
+<br><code class="ge">hit contract list-pr</code>
+<br><code class="ge">hit contract list-pr-auth</code>
+<br><code class="ge">hit contract list-pr-comm</code>
+<br>Parameters: 
+</p>
+<!--END-->
+<h3 id="hit-token">
+    <span class="bd-content-title">
+        hit token operations
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>hit token operations commands</li>
+<br><code class="ge">hit token help</code>
+<br><code class="ge">hit token eth [account]</code>
+<br><code class="ge">hit token hit [account]</code>
+<br><code class="ge">hit token request-test [account]</code>
+</p>
+
+<p>
+<li>Get account ETH</li>
+<br><code class="ge">hit token eth [account]</code>
+<br>Parameters: 
+<br>account: [Option], if account is provided return the account eth, otherwise return default account eth.
+</p>
+
+<p>
+<li>Get account HIT</li>
+<br><code class="ge">hit token hit [account]</code>
+<br>Parameters: 
+<br>account: [Option], if account is provided return the account HIT, otherwise return default account HIT.
+</p>
+
+<p>
+<li>Get ETH for test</li>
+<br><code class="ge">hit token request-test [account]</code>
+<br>Parameters: 
+<br>account: [Option], if account is provided will get ETH for the account, otherwise get ETH for the default account.
+</p>
+<!--END-->
+<h3 id="hit-encrypt">
+    <span class="bd-content-title">
+        hit  repository encryption
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>hit  repository encryption commands</li>
+<br><code class="ge">hit encrypt help</code>
+<br><code class="ge">hit encrypt add|renew|remove</code>
+</p>
+
+<p>
+<li>Encrypt public repository</li>
+<br><code class="ge">hit encrypt add</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Update repository keys</li>
+<br><code class="ge">hit encrypt renew</code>
+<br>Parameters: 
+</p>
+
+<p>
+<li>Delete encrypt keys and convert repository to public</li>
+<br><code class="ge">hit encrypt remove</code>
+<br>Parameters: 
+</p>
+<!--END-->
+<h3 id="hit-am">
+    <span class="bd-content-title">
+        hit repository PullRequest merge
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>hit repository PullRequest merge commands</li>
+<br><code class="ge">hit am help</code>
+<br><code class="ge">hit am pathId [--ignore-space-change|--ignore-white-sapce|--force-merge|--no-commit]</code>
+</p>
+
+<p>
+<li>Merge pull request</li>
+<br><code class="ge">hit am pathId</code>
+<br>Parameters: 
+<br>pathId: [Required], PullRequest id
+<br>--ignore-space-change: [Option], Merge patch ignore space
+<br>--ignore-white-sapce: [Option], Merge patch ignore white space
+<br>--force-merge: [Option], force merge content overwrite line content
+<br>--no-commit: [Option], if this options is not specify will keep all commits, otherwise not keep original commits
+</p>
+<!--END-->
+<h3 id="hit-migrate">
+    <span class="bd-content-title">
+        hit repository migration
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>hit repository migration commands</li>
+<br><code class="ge">hit migrate help</code>
+<br><code class="ge">hit migrate [--auto-rename] [--name repositoryName] [--token authorizationToken] uri</code>
+<br>Parameters: 
+<br>uri: [Required], the git uri
+</p>
+<!--END-->
+<h3 id="hit-pullrequest">
+    <span class="bd-content-title">
+        hit repository pullrequest
+    </span>
+</h3>
+
+<p>
+
+</p>
+
+<p>
+<li>hit repository pullreqeust commands</li>
+<br><code class="ge">hit pullrequest help</code>
+<br><code class="ge">hit pullrequest create -m 'comment' [startBranch] [endBranch]</code>
+<br>Parameters: 
+<br>comment: [Required], PullRequest comments
+<br>startBranch: [Option], start branch, default to master
+<br>endBranch: [Option], end branch, default to origin/master
+</p>
+<!--END-->
+

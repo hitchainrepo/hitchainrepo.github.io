@@ -78,6 +78,7 @@ function loadTemplate($el, href, updateNav){
 }
 
 var hit_versions = [
+    {version: "1.0.2", url: "docs/1.0.2/index.html"},
     {version: "0.0.5", url: "docs/0.0.5/index.html"},
     {version: "0.0.4", url: "docs/0.0.4/index.html"},
     {version: "0.0.3", url: "docs/0.0.3/index.html"},

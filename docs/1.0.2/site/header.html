@@ -49,10 +49,10 @@
 <div class="navbar-nav-scroll">
     <ul class="navbar-nav bd-navbar-nav flex-row">
         <li class="nav-item">
-            <a class="nav-link active" href="{{args.context}}/en/index.html">Home</a>
+            <a class="nav-link active" href="{{args.context}}">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link " href="{{args.context}}en/docs/1.0.2/index.html">Document</a>
+            <a class="nav-link " href="{{args.context}}docs/0.0.2/index.html">文档</a>
         </li>
     </ul>
 </div>
@@ -61,10 +61,18 @@
     <li class="nav-item dropdown">
         <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
-            v{{(hit_versions[0]||{}).version}}
+            <!--#
+                var ver=hit_versions[0].version;
+                for(var i=0; i<hit_versions.length; i++){
+                    window.location.href.indexOf(hit_versions[i].version) > 0
+                    ? (ver=hit_versions[i].version)
+                    : ver;
+                }
+            #-->
+            v{{ver}}
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
-            <a class="dropdown-item active" href="{{args.context}}{{(hit_versions[0]||{}).url}}">Lastest ({{(hit_versions[0]||{}).version}})</a>
+            <a class="dropdown-item active" href="{{args.context}}{{(hit_versions[0]||{}).url}}">最新 ({{(hit_versions[0]||{}).version}})</a>
             <div class="dropdown-divider"></div>
             <!--#for(var i=0; i<hit_versions.length; i++){#-->
             <a class="dropdown-item" href="{{args.context}}{{hit_versions[i].url}}">{{hit_versions[i].version}}</a>
@@ -155,11 +163,11 @@
     <li class="nav-item dropdown">
         <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="language_cn" data-toggle="dropdown"
            aria-haspopup="true" aria-expanded="false">
-            English
+            中文
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="language_cn">
-            <a class="dropdown-item" href="{{args.context}}docs/1.0.2/index.html">中文</a>
-            <a class="dropdown-item active" href="{{args.context}}en/index.html">English</a>
+            <a class="dropdown-item" href="{{args.context}}docs/0.0.1/index.html">中文</a>
+            <a class="dropdown-item" href="{{args.context}}en/index.html">English</a>
         </div>
     </li>
 </ul>
